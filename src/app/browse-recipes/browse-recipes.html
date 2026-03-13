@@ -1,0 +1,10 @@
+<p>browse-recipes works!</p>
+<ul>
+@for (R of ALL_RECIPES();track R.id) {
+  <li>
+    <span>{{R.title}}</span>
+    <span>{{R.description}}</span>
+    <a [routerLink]="R.id">view recipe</a>
+  </li>
+}
+</ul>

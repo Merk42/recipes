@@ -1,0 +1,9 @@
+#ing {
+  display: grid;
+  width:max-content;
+  grid-template-columns: repeat(3, auto);
+  gap:.5em
+}
+i {
+  font-size: .875em;
+}

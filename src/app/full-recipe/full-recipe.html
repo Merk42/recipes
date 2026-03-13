@@ -1,0 +1,6 @@
+<a [routerLink]="'/'">browse</a>
+
+<h1>{{recipe_summary()[0].title}}</h1>
+<p>{{recipe_summary()[0].description}}</p>
+<app-ingredients [ingredients]="recipe_ingredients()"/>
+<app-steps [steps]="recipe_steps()"/>
