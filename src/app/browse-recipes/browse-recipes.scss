@@ -1,0 +1,16 @@
+#recipes {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style-type: none;
+  margin: 0;
+  padding:0;
+  gap:1rem;
+}
+#recipes li {
+  padding: .5rem;
+  box-shadow: 0 0 12px black;
+  border-radius: .5rem;
+}
+#recipes li a{
+  display: block;
+}
