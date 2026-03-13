@@ -1,6 +1,6 @@
 <div id="ing">
 @for (I of ingredients(); track I.name) {
-  <span style="text-align: right;">{{I.quantity}}</span>
+  <span style="text-align: right;">{{+I.quantity}}</span>
   <span>{{I.unit}}</span>
   <span>{{I.name}}
     @if (I.notes) {
