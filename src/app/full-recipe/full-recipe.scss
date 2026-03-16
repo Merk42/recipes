@@ -6,8 +6,7 @@ main {
   grid-template-areas: "in sum"
   "in steps";
   gap:0 2rem;
-  margin-inline:auto;
-  max-width:62.5em;
+  grid-template-rows: auto 1fr;
 }
 .recipe_summary {
   grid-area: sum;

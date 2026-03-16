@@ -1,9 +1,12 @@
+<main>
 <ul id="recipes">
 @for (R of ALL_RECIPES();track R.id) {
   <li>
+    <img class="photo" [src]="R.image_url"/>
     <h2>{{R.title}}</h2>
-    <span>{{R.description}}</span>
+    <span class="description">{{R.description}}</span>
     <a [routerLink]="R.id">view recipe</a>
   </li>
 }
 </ul>
+</main>

@@ -1,5 +1,5 @@
 import { httpResource } from '@angular/common/http';
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { RECIPE_DETAIL_API } from '../const/types';
 import { Ingredients } from '../ingredients/ingredients';
@@ -22,5 +22,6 @@ export class FullRecipe {
   })
 
   readonly recipe_id = input('');
-  public recipe = httpResource<RECIPE_DETAIL_API>(() => `api/recipedetail.php?recipe_id=${this.recipe_id()}`)
+  // public recipe = httpResource<RECIPE_DETAIL_API>(() => `api/recipedetail.php?recipe_id=${this.recipe_id()}`)
+  public recipe = httpResource<RECIPE_DETAIL_API>(() => `example_recipe.json`)
 }

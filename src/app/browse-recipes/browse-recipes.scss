@@ -1,6 +1,7 @@
 #recipes {
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-rows: auto 1fr auto;
   list-style-type: none;
   margin: 0;
   padding:0;
@@ -12,8 +13,19 @@
   border-radius: .5rem;
   display: grid;
   grid-template-rows: subgrid;
-  grid-row: 3 span / 4;
+  grid-row: span 4;
 }
 #recipes li a{
   display: block;
+}
+.photo {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+  line-clamp: 3; /* Standard property */
 }
