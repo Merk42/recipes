@@ -1,10 +1,14 @@
 <a [routerLink]="'/'">browse</a>
 @if (!this.recipe.isLoading()) {
-  <h1>{{this.recipe.value()?.recipe?.title}}</h1>
-  <span>serves {{this.recipe.value()?.recipe?.servings}}</span>
-  <p>{{this.recipe.value()?.recipe?.description}}</p>
-  <app-ingredients [ingredients]="recipe_ingredients()"/>
-  @if(this.recipe.value()?.steps) {
+  <main>
+    <div class="recipe_summary">
+      <h1>{{this.recipe.value()?.recipe?.title}}</h1>
+      <p>{{this.recipe.value()?.recipe?.description}}</p>
+    </div>
+    <div class="recipe_ingredients">
+      <span>serves {{this.recipe.value()?.recipe?.servings}}</span>
+      <app-ingredients [ingredients]="recipe_ingredients()"/>
+    </div>
     <app-steps [steps]="recipe_steps()"/>
-  }
+  </main>
 }

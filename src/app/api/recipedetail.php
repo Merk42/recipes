@@ -21,7 +21,7 @@ $allResults = [];
 
 $query  = "SELECT * FROM recipes WHERE id=" . $recipe_id . ";";
 $query .= "SELECT step_number, instruction, timer_seconds FROM steps WHERE recipe_id=" . $recipe_id . " ORDER BY step_number;";
-$query .= "SELECT ri.recipe_id, i.name, ri.quantity FROM recipe_ingredients ri JOIN ingredients i ON i.id = ri.ingredient_id WHERE ri.recipe_id = " . $recipe_id . ";";
+$query .= "SELECT ri.recipe_id, i.name, ri.quantity, ri.unit, ri.notes FROM recipe_ingredients ri JOIN ingredients i ON i.id = ri.ingredient_id WHERE ri.recipe_id = " . $recipe_id . ";";
 
 if ($mysqli->multi_query($query)) {
     do {

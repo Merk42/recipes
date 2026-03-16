@@ -1,3 +1,25 @@
 h1 {
   margin-bottom:.5rem;
 }
+main {
+  display: grid;
+  grid-template-areas: "in sum"
+  "in steps";
+  gap:0 2rem;
+  margin-inline:auto;
+  max-width:62.5em;
+}
+.recipe_summary {
+  grid-area: sum;
+}
+.recipe_ingredients {
+  grid-area: in;
+}
+app-steps {
+  grid-area: steps;
+}
+@media (width < 48em) {
+  main {
+    display: block
+  };
+}

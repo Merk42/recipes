@@ -2,8 +2,14 @@
   display: grid;
   width:max-content;
   grid-template-columns: repeat(3, auto);
-  gap:.5em
+  gap:.5em 0
 }
-i {
+.ingredient_notes {
   font-size: .875em;
+}
+.ingredient_quantity{
+  text-align: right;
+}
+.ingredient_name{
+  margin-left:.5em;
 }
