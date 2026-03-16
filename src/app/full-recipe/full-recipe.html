@@ -1,8 +1,10 @@
 <a [routerLink]="'/'">browse</a>
-
-<h1>{{recipe_summary()[0].title}}</h1>
-<span>{{+recipe_summary()[0].servings}} servings</span>
-<p>{{recipe_summary()[0].description}}</p>
-<app-ingredients [ingredients]="recipe_ingredients()"/>
-<app-steps [steps]="recipe_steps()"/>
-<pre>{{this.userResource.value()|json}}</pre>
+@if (!this.recipe.isLoading()) {
+  <h1>{{this.recipe.value()?.recipe?.title}}</h1>
+  <span>serves {{this.recipe.value()?.recipe?.servings}}</span>
+  <p>{{this.recipe.value()?.recipe?.description}}</p>
+  <app-ingredients [ingredients]="recipe_ingredients()"/>
+  @if(this.recipe.value()?.steps) {
+    <app-steps [steps]="recipe_steps()"/>
+  }
+}

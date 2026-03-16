@@ -30,6 +30,17 @@ export type CATEGORIES_API = {
 }[]
 
 
-export type RECIPE_DETAIL_API = RECIPES_API & {
-  steps: STEPS_API[];
+export type RECIPE_DETAIL_API = {
+  recipe: {
+      id: string;
+  title: string;
+  description: string;
+  prep_time_mins: number|string;
+  cook_time_mins: number|string;
+  servings: number|string;
+  difficulty: string;
+  image_url: string|null,
+  created_at: string;
+  };
+  steps: STEPS_API;
 };
