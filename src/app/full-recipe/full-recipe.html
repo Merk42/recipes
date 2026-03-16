@@ -5,3 +5,4 @@
 <p>{{recipe_summary()[0].description}}</p>
 <app-ingredients [ingredients]="recipe_ingredients()"/>
 <app-steps [steps]="recipe_steps()"/>
+<pre>{{this.userResource.value()|json}}</pre>

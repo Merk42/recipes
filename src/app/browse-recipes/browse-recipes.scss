@@ -10,6 +10,9 @@
   padding: .5rem;
   box-shadow: 0 0 12px black;
   border-radius: .5rem;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: 3 span / 4;
 }
 #recipes li a{
   display: block;

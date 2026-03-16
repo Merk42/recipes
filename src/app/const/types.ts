@@ -28,3 +28,8 @@ export type CATEGORIES_API = {
   name:string;
   slug:string;
 }[]
+
+
+export type RECIPE_DETAIL_API = RECIPES_API & {
+  steps: STEPS_API[];
+};

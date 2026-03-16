@@ -153,3 +153,7 @@ export const CATEGORIES: CATEGORIES_API = [
   { name: 'Vegetarian', slug: 'vegetarian' },
   { name: 'Quick', slug: 'quick' },
 ];
+
+export const RECIPE_IDS: string[] = [
+  '1', '2', '3'
+]
