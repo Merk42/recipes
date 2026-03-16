@@ -12,7 +12,10 @@ import { Steps } from '../steps/steps';
   styleUrl: './full-recipe.scss',
 })
 export class FullRecipe {
-recipe_ingredients = signal([])
+
+  recipe_ingredients = computed(() => {
+    return this.recipe?.value()?.ingredients ?? []
+  })
 
   recipe_steps = computed(() => {
     return this.recipe?.value()?.steps ?? []

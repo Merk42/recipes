@@ -43,4 +43,5 @@ export type RECIPE_DETAIL_API = {
   created_at: string;
   };
   steps: STEPS_API;
+  ingredients?:any;
 };
