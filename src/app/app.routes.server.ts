@@ -4,7 +4,7 @@ import { RecipeData } from './recipe-data';
 export const serverRoutes: ServerRoute[] = [
   {
     path: '',
-    renderMode: RenderMode.Prerender,
+    renderMode: RenderMode.Client,
   },
   {
     path: ':recipe_id',
@@ -12,6 +12,6 @@ export const serverRoutes: ServerRoute[] = [
   },
   {
     path: '**',
-    renderMode: RenderMode.Prerender
+    renderMode: RenderMode.Client
   }
 ];
