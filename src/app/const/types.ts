@@ -45,3 +45,9 @@ export type RECIPE_DETAIL_API = {
   steps: STEPS_API;
   ingredients?:any;
 };
+
+export type ALL_INGREDIENTS_API = {
+  id: string;
+  name: string;
+  category: string;
+}[]
