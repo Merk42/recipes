@@ -1,6 +1,7 @@
 import { httpResource } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../environments/environment';
 import { RECIPES_API } from '../const/types';
 
 @Component({
@@ -10,6 +11,5 @@ import { RECIPES_API } from '../const/types';
   styleUrl: './browse-recipes.scss',
 })
 export class BrowseRecipes {
-  // public recipe = httpResource<RECIPES_API>(() => `api/browserecipes.php}`)
-  public recipes = httpResource<RECIPES_API>(() => `example_recipes.json`)
+  public recipes = httpResource<RECIPES_API>(() => `${environment.browse_api}`)
 }
