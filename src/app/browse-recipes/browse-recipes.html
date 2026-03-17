@@ -2,10 +2,14 @@
 <ul id="recipes">
 @for (R of recipes.value();track R.id) {
   <li>
-    <img class="photo" [src]="R.image_url"/>
+    @if (R.image_url) {
+      <img class="photo" [src]="R.image_url"/>
+    } @else {
+      <img class="photo" src="placeholder.png"/>
+    }
     <h2 class="name">{{R.title}}</h2>
     <span class="description">{{R.description}}</span>
-    <a [routerLink]="R.id">view recipe</a>
+    <a class="link" [routerLink]="R.id">view recipe</a>
   </li>
 }
 </ul>
