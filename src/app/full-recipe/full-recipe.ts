@@ -1,5 +1,5 @@
 import { httpResource } from '@angular/common/http';
-import { Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { environment } from '../../environments/environment';
 import { RECIPE_DETAIL_API } from '../const/types';
@@ -11,6 +11,7 @@ import { Steps } from '../steps/steps';
   imports: [Ingredients, Steps, RouterLink],
   templateUrl: './full-recipe.html',
   styleUrl: './full-recipe.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FullRecipe {
 

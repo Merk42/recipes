@@ -1,5 +1,5 @@
 import { httpResource } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { RECIPES_API } from '../const/types';
@@ -9,6 +9,7 @@ import { RECIPES_API } from '../const/types';
   imports: [RouterLink],
   templateUrl: './browse-recipes.html',
   styleUrl: './browse-recipes.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrowseRecipes {
   public recipes = httpResource<RECIPES_API>(() => `${environment.browse_api}`)

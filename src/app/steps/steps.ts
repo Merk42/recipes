@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { STEPS_API } from '../const/types';
 
 @Component({
@@ -6,7 +6,8 @@ import { STEPS_API } from '../const/types';
   standalone: true,
   imports: [],
   templateUrl: './steps.html',
-  styleUrl: './steps.scss'
+  styleUrl: './steps.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Steps {
 readonly steps = input.required<STEPS_API>()
