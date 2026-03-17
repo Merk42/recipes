@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
-import { ALL_RECIPES } from '../const/dummy-data';
+import { httpResource } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { RECIPES_API } from '../const/types';
+
 @Component({
   selector: 'app-browse-recipes',
   imports: [RouterLink],
@@ -9,5 +10,6 @@ import { RECIPES_API } from '../const/types';
   styleUrl: './browse-recipes.scss',
 })
 export class BrowseRecipes {
-  ALL_RECIPES = signal<RECIPES_API>(ALL_RECIPES)
+  // public recipe = httpResource<RECIPES_API>(() => `api/browserecipes.php}`)
+  public recipes = httpResource<RECIPES_API>(() => `example_recipes.json`)
 }

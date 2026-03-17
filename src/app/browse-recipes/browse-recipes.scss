@@ -18,6 +18,9 @@
 #recipes li a{
   display: block;
 }
+.name {
+  line-height: 1;
+}
 .photo {
   aspect-ratio: 16 / 9;
   object-fit: cover;
