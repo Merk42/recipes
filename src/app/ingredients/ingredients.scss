@@ -2,7 +2,7 @@
   display: grid;
   width:max-content;
   grid-template-columns: repeat(3, auto);
-  gap:.25em 0
+  font-size: .875em;
 }
 .ingredient_notes {
   font-size: .875em;
