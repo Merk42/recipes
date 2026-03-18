@@ -67,3 +67,8 @@ footer {
   max-width: 62.5em;
   margin-inline: auto;
 }
+
+p,
+li {
+  text-wrap: pretty;
+}

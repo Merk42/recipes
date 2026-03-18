@@ -1,7 +1,7 @@
 <main>
 @for (K of categories(); track K) {
   <div>
-    <h2>{{K}}</h2>
+    <h2 style="text-transform: capitalize;">{{K}}</h2>
     <ul>
     @for (I of grouped_ingredients()[K]; track I) {
       <li><span>{{I.name}}</span></li>
