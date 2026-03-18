@@ -1,6 +1,6 @@
 <main>
 <ul id="recipes">
-@for (R of recipes.value();track R.id) {
+@for (R of recipeService.filteredRecipies();track R.id) {
   <li>
     @if (R.image_url) {
       <img class="photo" [src]="R.image_url"/>
