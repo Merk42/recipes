@@ -60,10 +60,10 @@ h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
-
-/* common styles */
-main {
-  margin-inline:auto;
-  max-width:62.5em;
+header,
+main,
+footer {
   padding-inline: 1rem;
+  max-width: 62.5em;
+  margin-inline: auto;
 }
