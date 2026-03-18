@@ -24,6 +24,6 @@ export class AllIngredients {
     return Object.keys(this.grouped_ingredients());
   })
 
-  public all_ingredients = httpResource<ALL_INGREDIENTS_API>(() => `${environment.all_ingredeints_api}`)
+  public all_ingredients = httpResource<ALL_INGREDIENTS_API>(() => `${environment.all_ingredients_api}`)
 
 }

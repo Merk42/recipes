@@ -9,16 +9,17 @@ import { RECIPES_API } from './const/types';
 export class RecipeData {
   public recipes = httpResource<RECIPES_API>(() => `${environment.browse_api}`)
 
-  showIDs = signal<string[]>([])
+  showIDs = signal<Set<string>>(new Set)
 
   filteredRecipies = computed(() => {
+    const IDS = Array.from(this.showIDs())
     const FILTERED = this.recipes.value();
     if (!FILTERED) {
       return []
     }
-    if (!this.showIDs().length) {
+    if (!IDS.length) {
       return FILTERED;
     }
-    return FILTERED.filter(recipe => this.showIDs().includes(recipe.id))
+    return FILTERED.filter(recipe => IDS.includes(recipe.id))
   })
 }

@@ -1,0 +1,24 @@
+<p>recipe-filter works!</p>
+@for (K of categories(); track K) {
+  <div style="display: none;">
+    <h2 style="text-transform: capitalize;">{{K}}</h2>
+    <ul>
+    @for (I of grouped_ingredients()[K]; track I) {
+      <li><button (click)="filter1()">{{I.name}}</button></li>
+    }
+    </ul>
+  </div>
+
+}
+<form [formGroup]="form"  (ngSubmit)="onSubmit()">
+  @for (option of all(); track option.id) {
+            <div>
+                <label>
+                    <input type="checkbox" [formControlName]="option.id" />
+                    {{ option.name }}
+                </label>
+            </div>
+        }
+        <button>filter</button>
+</form>
+<pre>{{recipeids.value() | json}}</pre>
