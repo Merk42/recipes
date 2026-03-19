@@ -13,13 +13,13 @@ export class RecipeData {
 
   filteredRecipies = computed(() => {
     const IDS = Array.from(this.showIDs())
-    const FILTERED = this.recipes.value();
+    const FILTERED = this.recipes.value() || [];
     if (!FILTERED) {
       return []
     }
-    if (!IDS.length) {
+    // if (!IDS.length) {
       return FILTERED;
-    }
+    // }
     return FILTERED.filter(recipe => IDS.includes(recipe.id))
   })
 }

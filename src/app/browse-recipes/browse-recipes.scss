@@ -7,36 +7,3 @@
   padding:0;
   gap:1rem;
 }
-#recipes li {
-  box-shadow: 0 0 12px black;
-  border-radius: .5rem;
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 4;
-  overflow: hidden;
-}
-#recipes li a{
-  display: block;
-}
-.name,
-.description,
-.link {
-  padding-inline: .5rem;
-}
-.name {
-  line-height: 1;
-}
-.photo {
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-.description {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; /* Number of lines to show */
-  line-clamp: 3; /* Standard property */
-}
-.link{
-  margin-bottom:.5rem;
-}

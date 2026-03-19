@@ -1,15 +1,19 @@
 <main>
+
 <ul id="recipes">
+  @if (!recipeService.filteredRecipies().length) {
+  <li app-recipe-card-skeleton></li>
+  <li app-recipe-card-skeleton></li>
+  <li app-recipe-card-skeleton></li>
+  <li app-recipe-card-skeleton></li>
+  <li app-recipe-card-skeleton></li>
+  <li app-recipe-card-skeleton></li>
+  <li app-recipe-card-skeleton></li>
+  <li app-recipe-card-skeleton></li>
+  }
+
 @for (R of recipeService.filteredRecipies();track R.id) {
-  <li>
-    @if (R.image_url) {
-      <img class="photo" [src]="R.image_url"/>
-    } @else {
-      <img class="photo" src="placeholder.png"/>
-    }
-    <h2 class="name">{{R.title}}</h2>
-    <span class="description">{{R.description}}</span>
-    <a class="link" [routerLink]="R.id">view recipe</a>
+  <li app-recipe-card [recipe]="R">
   </li>
 }
 </ul>

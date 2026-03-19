@@ -1,0 +1,8 @@
+    @if (recipe().image_url) {
+      <img class="photo" [src]="recipe().image_url"/>
+    } @else {
+      <img class="photo" src="placeholder.png"/>
+    }
+    <h2 class="name">{{recipe().title}}</h2>
+    <span class="description">{{recipe().description}}</span>
+    <a class="link" [routerLink]="recipe().id">view recipe</a>
