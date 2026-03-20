@@ -15,6 +15,7 @@ aside {
   background-color: white;
   transform: translateX(-100%);
   transition: transform .25s;
+  padding:1rem;
 }
 aside.open{
   transform: translateX(0%);

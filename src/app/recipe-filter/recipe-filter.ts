@@ -8,7 +8,7 @@ import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-filter',
-  imports: [ReactiveFormsModule, JsonPipe],
+  imports: [ReactiveFormsModule],
   templateUrl: './recipe-filter.html',
   styleUrl: './recipe-filter.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -18,30 +18,11 @@ export class RecipeFilter {
 
   ingredientIDs = signal<Set<string>>(new Set)
 
-  grouped_ingredients = computed(() => {
-    const I = this.all_ingredients.value() || [];
-    if (I.length) {
-      I.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
-    }
-    return Object.groupBy(I, ({ category }) => category);
-  })
-
-  categories = computed<string[]>(() => {
-    return Object.keys(this.grouped_ingredients());
-  })
-
   all = computed(() => {
     return this.all_ingredients.value() || []
   })
 
   public all_ingredients = httpResource<ALL_INGREDIENTS_API>(() => `${environment.all_ingredients_api}`)
-
-  filter1() {
-    const S = this.recipeService.showIDs();
-    S.add('1')
-    this.recipeService.showIDs.set(S)
-  }
-
 
   protected form = new FormGroup(
     Object.fromEntries(
@@ -52,15 +33,15 @@ export class RecipeFilter {
   );
 
   query = computed(() => {
+    if (this.ingredientIDs().size === 0) {
+      return 0
+    }
     return Array.from(this.ingredientIDs()).join(',')
   })
 
-
   public recipeids = httpResource<{recipe_id:string}[]>(() => `${environment.filter_api}?ingredient_id=${this.query()}`)
+
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.form.value);
-    console.warn(Object.keys(this.form.value).filter(key => this.form.value[key]))
     const INGREDEINT_IDS = Object.keys(this.form.value).filter(key => this.form.value[key]) || []
     this.ingredientIDs.set(new Set(INGREDEINT_IDS));
   }
@@ -68,8 +49,9 @@ export class RecipeFilter {
   constructor() {
     effect(() => {
       const rids = this.recipeids.value() || [];
-      const nids:string[] = rids.map(r => r.recipe_id)
-      this.recipeService.showIDs.set(new Set(nids))
+      const nids:string[] = rids.map(r => r.recipe_id);
+      const idset = new Set(nids);
+      this.recipeService.showIDs.set(idset);
     })
     effect(() => {
       const ings = this.all();

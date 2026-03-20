@@ -1,10 +1,16 @@
 .photo,
 .name,
-.description {
+.description,
+.link {
   background-color: lightgray;
 }
 
 .name,
 .description {
-  height:2.5lh
+  height:3lh
+}
+
+.link {
+  height: 1.125lh;
+  width:10ch;
 }

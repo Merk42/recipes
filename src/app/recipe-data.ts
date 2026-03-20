@@ -17,9 +17,9 @@ export class RecipeData {
     if (!FILTERED) {
       return []
     }
-    // if (!IDS.length) {
+   if (!IDS.length) {
       return FILTERED;
-    // }
+   }
     return FILTERED.filter(recipe => IDS.includes(recipe.id))
   })
 }
