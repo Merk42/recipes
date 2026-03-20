@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { RecipeData } from '../recipe-data';
 import { RecipeFilter } from "../recipe-filter/recipe-filter";
 import { RecipeCard } from "../recipe-card/recipe-card";
@@ -12,5 +12,10 @@ import { RecipeCardSkeleton } from "../recipe-card-skeleton/recipe-card-skeleton
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrowseRecipes {
+  isFilterOpen = signal(false)
   recipeService = inject(RecipeData);
+
+  toggleFilter() {
+    this.isFilterOpen.set(!this.isFilterOpen())
+  }
 }

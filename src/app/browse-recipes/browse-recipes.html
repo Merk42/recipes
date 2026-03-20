@@ -1,5 +1,5 @@
 <main>
-
+<button (click)="toggleFilter()">filter</button>
 <ul id="recipes">
   @if (!recipeService.filteredRecipies().length) {
   <li app-recipe-card-skeleton></li>
@@ -17,5 +17,8 @@
   </li>
 }
 </ul>
-<app-recipe-filter/>
+<aside [class.open]="isFilterOpen()">
+  <button (click)="toggleFilter()">close</button>
+  <app-recipe-filter/>
+</aside>
 </main>
