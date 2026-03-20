@@ -4,8 +4,8 @@ import { environment } from '../../environments/environment';
 import { ALL_INGREDIENTS_API } from '../const/types';
 import { RecipeData } from '../recipe-data';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ALL_INGREDIENTS } from '../const/dummy-data';
 import { JsonPipe } from '@angular/common';
+
 @Component({
   selector: 'app-recipe-filter',
   imports: [ReactiveFormsModule, JsonPipe],
@@ -31,7 +31,7 @@ export class RecipeFilter {
   })
 
   all = computed(() => {
-    return ALL_INGREDIENTS
+    return this.all_ingredients.value() || []
   })
 
   public all_ingredients = httpResource<ALL_INGREDIENTS_API>(() => `${environment.all_ingredients_api}`)
@@ -57,7 +57,7 @@ export class RecipeFilter {
 
 
   public recipeids = httpResource<{recipe_id:string}[]>(() => `${environment.filter_api}?ingredient_id=${this.query()}`)
-onSubmit() {
+  onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.form.value);
     console.warn(Object.keys(this.form.value).filter(key => this.form.value[key]))
@@ -71,7 +71,16 @@ onSubmit() {
       const nids:string[] = rids.map(r => r.recipe_id)
       this.recipeService.showIDs.set(new Set(nids))
     })
+    effect(() => {
+      const ings = this.all();
+      this.form = new FormGroup(
+        Object.fromEntries(
+          this.all().map(
+            option => [option.id.toString(), new FormControl(false, { nonNullable: true })]
+          )
+        )
+      );
+    })
   }
-
 }
 
