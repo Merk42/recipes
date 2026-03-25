@@ -17,6 +17,7 @@
   </li>
 }
 </ul>
+<a [routerLink]="'/add'">ingredients</a>
 <aside [class.open]="isFilterOpen()">
   <button (click)="toggleFilter()">close</button>
   <app-recipe-filter/>

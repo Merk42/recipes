@@ -7,6 +7,10 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Client,
   },
   {
+    path: 'add',
+    renderMode: RenderMode.Client,
+  },
+  {
     path: ':recipe_id',
     renderMode: RenderMode.Client
   },

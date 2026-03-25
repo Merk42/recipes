@@ -1,0 +1,11 @@
+form{
+  max-width: 62.5em;
+  margin-inline:auto;
+}
+.numgroup{
+  display: flex;
+  gap:.5rem;
+}
+.numgroup > *{
+  flex-grow: 1;
+}

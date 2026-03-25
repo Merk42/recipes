@@ -1,0 +1,44 @@
+<form novalidate (submit)="onSubmit()">
+    <p>fields marked with * are required</p>
+    <section>
+      <app-input id="title" [formField]="newRecipeForm.title">title</app-input>
+      <app-input id="description" [formField]="newRecipeForm.description">description</app-input>
+      <div class="numgroup">
+        <app-input id="prep_time_mins" type="number" [formField]="newRecipeForm.prep_time_mins">prep_time_mins</app-input>
+        <app-input id="cook_time_mins" type="number" [formField]="newRecipeForm.cook_time_mins">cook_time_mins</app-input>
+        <app-input id="servings" type="number" [formField]="newRecipeForm.servings">servings</app-input>
+      </div>
+    </section>
+    <section>
+
+    </section>
+    <section>
+      @for (item of newRecipeModel().steps; track $index) {
+      <div style="display: flex;gap:.5rem;">
+        <app-input [id]="'step-' + $index" [formField]="newRecipeForm.steps[$index]">step {{$index+1}}</app-input>
+        <button style="align-self: self-end;" type="button" (click)="removeStep($index)">Remove</button>
+      </div>
+      }
+
+  <button type="button" (click)="addStep()">Add Step</button>
+
+    </section>
+    <section>
+            <div class="row">
+        <div class="row-value">
+          <button type="button"
+                  title="Ensure the form is valid and required fields are entered before saving"
+                  class="btn btn-primary"
+                  [disabled]="this.newRecipeForm().invalid()"
+                  (click)="onSubmit()">
+            Save Profile
+          </button>
+          <button type="button"
+                  class="btn btn-secondary"
+                  (click)="onCancel()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </section>
+    </form>
