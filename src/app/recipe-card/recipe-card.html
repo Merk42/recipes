@@ -1,7 +1,7 @@
     @if (recipe().image_url) {
-      <img class="photo" [src]="recipe().image_url"/>
+      <img class="photo" [ngSrc]="recipe().image_url ?? ''" width="400" height="400"/>
     } @else {
-      <img class="photo" src="placeholder.png"/>
+      <img class="photo" ngSrc="placeholder.png" width="400" height="400"/>
     }
     <h2 class="name">{{recipe().title}}</h2>
     <span class="description">{{recipe().description}}</span>

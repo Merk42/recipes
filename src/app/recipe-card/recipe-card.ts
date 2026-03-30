@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -15,7 +16,7 @@ interface Recipe {
 
 @Component({
   selector: '[app-recipe-card]',
-  imports: [RouterLink],
+  imports: [NgOptimizedImage, RouterLink],
   templateUrl: './recipe-card.html',
   styleUrl: './recipe-card.scss',
 })
