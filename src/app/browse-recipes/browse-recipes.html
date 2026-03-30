@@ -1,7 +1,7 @@
 <main>
 <button (click)="toggleFilter()">filter</button>
 <ul id="recipes">
-  @if (!recipeService.filteredRecipies().length) {
+  @if (!recipeService.recipes.value()) {
   <li app-recipe-card-skeleton></li>
   <li app-recipe-card-skeleton></li>
   <li app-recipe-card-skeleton></li>

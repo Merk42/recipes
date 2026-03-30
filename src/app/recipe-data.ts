@@ -12,14 +12,11 @@ export class RecipeData {
   showIDs = signal<Set<string>>(new Set)
 
   filteredRecipies = computed(() => {
-    const IDS = Array.from(this.showIDs())
+    const IDS = Array.from(this.showIDs()).filter(item => item !== undefined)
     const FILTERED = this.recipes.value() || [];
-    if (!FILTERED) {
-      return []
+    if (!IDS.length) {
+        return FILTERED;
     }
-   if (!IDS.length) {
-      return FILTERED;
-   }
     return FILTERED.filter(recipe => IDS.includes(recipe.id))
   })
 }
