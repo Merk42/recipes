@@ -19,7 +19,7 @@ export class RecipeFilter {
   ingredientIDs = signal<Set<string>>(new Set)
 
   all = computed(() => {
-    return this.all_ingredients.value() || []
+    return this.all_ingredients.value()?.sort((a, b) => a.name.localeCompare(b.name)) || []
   })
 
   public all_ingredients = httpResource<ALL_INGREDIENTS_API>(() => `${environment.all_ingredients_api}`)
