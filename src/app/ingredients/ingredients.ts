@@ -16,21 +16,34 @@ export class Ingredients {
     }
     const DECS = q.toString().split(".");
     const INT = Number(DECS[0]) > 0 ? DECS[0] : '';
-    let dec = DECS[1];
+    let dec = `.${DECS[1]}`;
     switch (DECS[1]) {
+      case '125':
+        dec = '⅛';
+        break;
       case '25':
         dec = '¼';
         break;
+      case '3':
+      case '30':
+      case '33':
+        dec = '⅓'
+        break
       case '5':
       case '50':
         dec = '½';
         break;
+      case '6':
+      case '60':
+      case '66':
+        dec = '⅔'
+        break
       case '75':
         dec = '¾';
         break;
       default:
         // Code to execute if none of the cases match
     }
-    return `${INT} ${dec}`;
+    return `${INT}${dec}`;
   }
 }
