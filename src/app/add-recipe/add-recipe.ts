@@ -1,57 +1,47 @@
 import { ChangeDetectionStrategy, Component, signal, viewChild } from '@angular/core';
 import { FormField, email, form, required, submit } from '@angular/forms/signals';
 import { Input } from '../form/input/input';
+import { Select } from '../form/select/select';
 import { initialData, newRecipe, newRecipeSchema } from './new-recipe';
-
-interface DemoData {
-  title: string;
-  description: string;
-  prep_time_mins: number;
-  cook_time_mins: number;
-  servings: number;
-  difficulty: string;
-  steps: string[]
-}
 
 @Component({
   selector: 'app-add-recipe',
-  imports: [FormField, Input],
+  imports: [FormField, Input, Select],
   templateUrl: './add-recipe.html',
   styleUrl: './add-recipe.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddRecipe {
-  demoModel = signal<DemoData>({
-    title: '',
-    description: '',
-    prep_time_mins: 0,
-    cook_time_mins: 0,
-    servings: 1,
-    difficulty: 'easy',
-    steps: ['']
-  });
-
-  demoForm = form(this.demoModel, (schemaPath) => {
-  });
-
   newRecipeModel = signal<newRecipe>(initialData);
 
   // Declare a form from the model and logic rules schema
   newRecipeForm = form(this.newRecipeModel, newRecipeSchema);
 
-  // Add an empty social media profile link
   addStep() {
-    this.newRecipeModel.update(profile => ({
-      ...profile,
-      steps: [...profile.steps, '']
+    this.newRecipeModel.update(recipe => ({
+      ...recipe,
+      steps: [...recipe.steps, '']
     }));
   }
 
-  // Delete a social media profile link
   removeStep(index: number) {
-    this.newRecipeModel.update(profile => ({
-      ...profile,
-      steps: profile.steps.filter((_, i) => i !== index)
+    this.newRecipeModel.update(recipe => ({
+      ...recipe,
+      steps: recipe.steps.filter((_, i) => i !== index)
+    }));
+  }
+
+  addIngredient() {
+    this.newRecipeModel.update(recipe => ({
+      ...recipe,
+      ingredients: [...recipe.ingredients, {quantity: 1, unit: '', item: '', notes: ''}]
+    }));
+  }
+
+  removeIngredient(index: number) {
+    this.newRecipeModel.update(recipe => ({
+      ...recipe,
+      ingredients: recipe.ingredients.filter((_, i) => i !== index)
     }));
   }
 

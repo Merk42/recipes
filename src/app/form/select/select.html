@@ -1,0 +1,28 @@
+<label [htmlFor]="idfor()" class="flex font-bold w-full">
+  <span class="w-[1ch]">@if(required()){*}</span>
+  <span><ng-content /></span>
+</label>
+<select
+  [id]="idfor()"
+  class="block border-2 w-full rounded-lg h-[2.75rem] px-2 inset-shadow-slate-500 dark:inset-shadow-slate-900"
+  [class.inset-shadow-sm]="displayState() !== 'readonly' && displayState() !== 'disabled'"
+  [class]="displayClasses()"
+  [value]="value()"
+  (input)="update($event)"
+  [disabled]="disabled()"
+  (blur)="touched.set(true)"
+  >
+  <ng-content select="option" />
+</select>
+@if (displayState() !== 'error') {
+  <app-notes>
+    <ng-content select="[notes]" />
+  </app-notes>
+}
+
+@if (displayState() === 'error') {
+  <app-error
+    role="alert"
+    [errors]="errors()"
+    />
+}

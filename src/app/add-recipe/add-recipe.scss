@@ -9,3 +9,20 @@ form{
 .numgroup > *{
   flex-grow: 1;
 }
+
+
+.add-ingredient,
+.add-step {
+  display: flex;
+  gap:.5rem;
+}
+
+.add-quantity {
+  max-width: min-content;
+}
+
+.add-ingredient,
+.add-step,
+.add-unit {
+  flex-grow: 1;
+}

@@ -1,5 +1,14 @@
 import { applyEach, required, schema, SchemaPathTree, validate } from "@angular/forms/signals";
 
+type Unit = ''|'tsp'|'tbsp'|'cup'|'oz';
+
+export interface Ingredient {
+  quantity: number;
+  unit: Unit;
+  item: string;
+  notes:string;
+}
+
 export interface newRecipe {
   title: string;
   description: string;
@@ -7,6 +16,7 @@ export interface newRecipe {
   cook_time_mins: number;
   servings: number;
   difficulty: string;
+  ingredients: Ingredient[];
   steps: string[];
 }
 
@@ -17,6 +27,7 @@ export const initialData: newRecipe = {
   cook_time_mins: 0,
   servings: 1,
   difficulty: 'easy',
+  ingredients: [],
   steps: []
 }
 

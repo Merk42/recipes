@@ -1,6 +1,7 @@
 <form novalidate (submit)="onSubmit()">
     <p>fields marked with * are required</p>
     <section>
+      <h2>Summary</h2>
       <app-input id="title" [formField]="newRecipeForm.title">title</app-input>
       <app-input id="description" [formField]="newRecipeForm.description">description</app-input>
       <div class="numgroup">
@@ -10,18 +11,33 @@
       </div>
     </section>
     <section>
-
+      <h2>Ingredients</h2>
+      @for (item of newRecipeModel().ingredients; track $index) {
+      <div class="add-ingredient">
+        <app-input class="add-quantity" [id]="'quantity-' + $index" type="number" [formField]="newRecipeForm.ingredients[$index].quantity">quantity</app-input>
+        <app-select class="add-unit" [id]="'unit-' + $index" [formField]="newRecipeForm.ingredients[$index].unit">unit
+          <option value=""></option>
+          <option value="tsp">tsp</option>
+          <option value="tbsp">tbsp</option>
+          <option value="cup">cup</option>
+          <option value="oz">oz</option>
+        </app-select>
+        <app-input class="add-item" [id]="'item-' + $index" [formField]="newRecipeForm.ingredients[$index].item">item</app-input>
+        <app-input class="add-notes" [id]="'notes-' + $index" [formField]="newRecipeForm.ingredients[$index].notes">notes</app-input>
+        <button style="align-self: self-end;" type="button" (click)="removeIngredient($index)">Remove</button>
+      </div>
+      }
+      <button type="button" (click)="addIngredient()">Add Ingredient</button>
     </section>
     <section>
+      <h2>Steps</h2>
       @for (item of newRecipeModel().steps; track $index) {
-      <div style="display: flex;gap:.5rem;">
+      <div class="add-step">
         <app-input [id]="'step-' + $index" [formField]="newRecipeForm.steps[$index]">step {{$index+1}}</app-input>
         <button style="align-self: self-end;" type="button" (click)="removeStep($index)">Remove</button>
       </div>
       }
-
-  <button type="button" (click)="addStep()">Add Step</button>
-
+      <button type="button" (click)="addStep()">Add Step</button>
     </section>
     <section>
             <div class="row">

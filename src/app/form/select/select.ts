@@ -5,26 +5,16 @@ import { Error } from '../error/error';
 import { Notes } from '../notes/notes';
 
 @Component({
-  selector: 'app-input',
+  selector: 'app-select',
   imports: [Error, Notes],
-  templateUrl: './input.html',
-  styleUrls: ['../fields.scss', './input.scss'],
+  templateUrl: './select.html',
+  styleUrls: ['../fields.scss', './select.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Input implements FormValueControl<string|number|null> {
-
-  readonly type = input<'color'|'date'|'datetime-local'|'email'|'file'|'month'|'number'|'password'|'range'|'search'|'tel'|'text'|'time'|'url'|'week'>('text');
-  readonly placeholder = input<string>('');
-
+export class Select implements FormValueControl<string|number|null> {
   readonly value = model<string | number | null>(null);
   readonly disabled = input(false);
   readonly required = input(false);
-  readonly readonly = input(false);
-
-  readonly minLength = input<number | undefined>(undefined);
-  readonly maxLength = input<number | undefined>(undefined);
-  readonly min = input<number | undefined>(undefined);
-  readonly max = input<number | undefined>(undefined);
 
   readonly id = input.required()
 
@@ -35,9 +25,6 @@ export class Input implements FormValueControl<string|number|null> {
   displayState = computed<'default'|'error'|'disabled'|'readonly'>(() => {
     if (this.disabled()) {
       return 'disabled'
-    }
-    if (this.readonly()) {
-      return 'readonly'
     }
     if (this.invalid() && this.touched()) {
       return 'error'
@@ -59,7 +46,7 @@ export class Input implements FormValueControl<string|number|null> {
   })
 
   idfor = computed(() => {
-    return `fi-${this.id()}`
+    return `fs-${this.id()}`
   })
 
   update($event:any) {
@@ -67,13 +54,3 @@ export class Input implements FormValueControl<string|number|null> {
   }
 }
 
-export const PATTERNS = {
-  zip: {
-    regex: '[0-9]{5}',
-    message: 'Zip code must be 5 digits'
-  },
-  alphanumeric: {
-    regex: '^[a-zA-Z0-9]+$',
-    message: 'Field must only be letters and or numbers'
-  }
-}
