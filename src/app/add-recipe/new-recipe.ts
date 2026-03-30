@@ -1,6 +1,6 @@
 import { applyEach, required, schema, SchemaPathTree, validate } from "@angular/forms/signals";
 
-type Unit = ''|'tsp'|'tbsp'|'cup'|'oz';
+type Unit = ''|'tsp'|'tbsp'|'cup'|'oz'|'lb'|'g';
 
 export interface Ingredient {
   quantity: number;
