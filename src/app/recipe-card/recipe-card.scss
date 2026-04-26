@@ -23,8 +23,14 @@ a{
 .name {
   line-height: 1;
 }
+.photocontainer {
+  position: relative;
+}
+.photocontainer,
 .photo {
-  aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 9;
+}
+.photo {
   object-fit: cover;
 }
 .description {
